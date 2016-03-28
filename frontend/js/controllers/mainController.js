@@ -52,12 +52,22 @@ function MainController(Upload, API_URL,$http) {
      noseLengthPercentage = (noselengthpixels / faceHeight) * 100;
      self.fatface.nose = noseLengthPercentage;
 
-     hatYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y - 200;
+     hatYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y - (faceHeight * 0.5);
      hatXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
      $(".hat").css("margin-top",hatYpos); 
-     $(".hat").css("margin-left",hatXpos - (faceWidth * 0.1)); 
-     $(".hat").css("width",faceWidth * 1.2); 
+     $(".hat").css("margin-left",hatXpos - (faceWidth * 0.2)); 
+     $(".hat").css("width",faceWidth * 1.4); 
      $(".hat").css("height",faceHeight * 0.5); 
+
+
+
+     hairYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y;
+     hairXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
+     $(".hair").css("margin-top",hairYpos - 100); 
+     $(".hair").css("margin-left",hairXpos - (faceWidth * 0.2)); 
+     $(".hair").css("width",faceWidth * 1.4); 
+     $(".hair").css("height",faceHeight); 
+
 
      necklaceXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
      necklaceYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[2].y
@@ -87,6 +97,7 @@ function MainController(Upload, API_URL,$http) {
     $(".glasses").css("margin-left",glassesXpos); 
     $(".glasses").css("margin-top",glassesYpos); 
    $(".glasses").css("height", faceHeight * 0.4);
+   $(".glasses").css("width", faceWidth);
 
 
       }, function errorCallback(response) {

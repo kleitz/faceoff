@@ -31,23 +31,21 @@
   
       <!-- Left nav -->
       <ul class="nav navbar-nav">
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li><button type="button" class="btn btn-warning" id="beardbutton">Beard Toggle</button></li>
-        <li><button type="button" class="btn btn-warning" id="mustaschebutton">Mustasche Toggle</button></li>
-        <li><button type="button" class="btn btn-warning" id="hatbutton">hat Toggle</button></li>
-        <li><button type="button" class="btn btn-warning" id="necklacebutton">Necklace Toggle</button></li>
+        <li><a href="#" id="beardbutton">Beard Toggle</a></li>
+        <li><a href="#" id="mustaschebutton">Mustasche Toggle</a></li>
+        <li><a href="#" id="hatbutton">hat Toggle</a></li>
+        <li><a href="#" id="necklacebutton">Necklace Toggle</a></li>
+        <li><a href="#" id="glassesbutton">Glasses Toggle</a></li>
+        <li><a href="#" id="hairbutton">Hair Toggle</a></li>
+        <li><a href="#">Nose takes up: {{main.fatface.nose}} %</a></li>
 
 
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">A long sub menu <span class="caret"></span></a>
+
+
             
                 </li>
-                <li><a href="#">Another link</a></li>
-                <li><a href="#">One more link</a></li>
+       
+            
               </ul>
             </li>
           </ul>
@@ -61,37 +59,44 @@
   </div><!--/.container -->
 </div>
 
+
+
 <main class="margintop">
 
-<img class="absolute" ng-src="{{main.fatface.filestore}}" />
-<div class="absolutediv"> 
-<img class="beard absolute" id="beard"  src="./public/beard0.png" />
-<img class="mustache absolute" id="mustache" src="./public/mustache0.png" />
-<img class="hat absolute" id="hat" src="./public/hat0.png" />
-<img class="necklace absolute" id="necklace" src="./public/necklace0.png" />
-<img class="glasses absolute" id="glasses" src="./public/glasses1.png" />
-</div>
-
-
-
-<section>
+<div class="sidebar">
 
 
 
 
-<h3>Nose takes up: {{main.fatface.nose}} %</h3>
-<br>-------------------------------</br>
+
+<h3>------Upload Photo--------</h3>
   Upload single file on form submit
   <form name="main.form" ng-submit="main.uploadSingle()">
-    <input type="file"ngf-select ng-model="main.file" name="file">Select File</div>
-    <button type="submit">Submit</button>
+    <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
+    <button type="submit">Upload photo</button>
   </form>
 
 
-  {{main.fatface.filestore}}
 
 
-  </section>
+
+  </div>
+
+<section>
+
+<img class="absolute" ng-src="{{main.fatface.filestore}}" />
+<div class="absolutediv"> 
+<img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
+<img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
+<img class="hat absoluteP" id="hat" src="./public/hat0.png" />
+<img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
+<img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
+<img class="hair absoluteP" id="hair" src="./public/hair0.png" />
+</div>
+</section>
+
+
+
 </main>
 </body>
 </html>

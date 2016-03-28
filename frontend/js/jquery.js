@@ -6,6 +6,29 @@ $( document ).ready(function() {
     var hatNum = 0;
     var necklaceNum = 0;
     var glassesNum = 0;
+    var hairNum = 0;
+
+    $( ".absoluteP" ).hide(); // hide all on load
+
+
+    $( "#hairbutton" ).click(function() {
+
+    	if($('#hair').is(':visible')) {
+
+    	   $( "#hair" ).hide( "slow", function() {
+    	   });
+    	} else {
+    		if (hairNum == 2){
+    			hairNum = 0;
+    		} else {
+    			hairNum =  hairNum + 1;
+    		}
+    		$("#hair").attr("src","./public/hair"+ hairNum + ".png");
+    		$( "#hair" ).show();
+    	}
+
+    });
+
 
     $( "#glassesbutton" ).click(function() {
 
@@ -14,7 +37,7 @@ $( document ).ready(function() {
     	   $( "#glasses" ).hide( "slow", function() {
     	   });
     	} else {
-    		if (glassesNum == 2){
+    		if (glassesNum == 3){
     			glassesNum = 0;
     		} else {
     			glassesNum =  glassesNum + 1;
@@ -69,7 +92,7 @@ $( document ).ready(function() {
     	   $( "#hat" ).hide( "slow", function() {
     	   });
     	} else {
-    		if (hatNum == 2){
+    		if (hatNum == 3){
     			hatNum = 0;
     		} else {
     			hatNum =  hatNum + 1;
