@@ -1,3 +1,6 @@
+
+responseFromServer = {};
+
 angular
   .module('uploader')
   .controller('MainController', MainController);
@@ -8,7 +11,10 @@ function MainController(Upload, API_URL,$http) {
 
   self.file = null;
   self.files = null;
+  self.beardshow = true;
+  self.mustacheshow = true;
   self.fatface = {};
+
   
   this.uploadSingle = function() {
     Upload.upload({
@@ -36,7 +42,53 @@ function MainController(Upload, API_URL,$http) {
     }).then(function successCallback(response) {
       console.log(response);
       self.fatface.processed = response.data[0];
-      
+      responseFromServer = response.data[0]
+
+
+
+    faceWidth = (responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[1].x) - (responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x);
+     faceHeight = (responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[3].y) - (responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[1].y);
+     noselengthpixels = (responseFromServer.faceAnnotations[0].landmarks[7].position.y) - (responseFromServer.faceAnnotations[0].landmarks[6].position.y)
+     noseLengthPercentage = (noselengthpixels / faceHeight) * 100;
+     self.fatface.nose = noseLengthPercentage;
+
+     hatYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y - 200;
+     hatXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
+     $(".hat").css("margin-top",hatYpos); 
+     $(".hat").css("margin-left",hatXpos - (faceWidth * 0.1)); 
+     $(".hat").css("width",faceWidth * 1.2); 
+     $(".hat").css("height",faceHeight * 0.5); 
+
+     necklaceXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
+     necklaceYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[2].y
+
+     $(".necklace").css("margin-top",necklaceYpos); 
+     $(".necklace").css("margin-left",necklaceXpos - (faceWidth * 0.1)); 
+     $(".necklace").css("width",faceWidth * 1.2); 
+     $(".necklace").css("height",faceHeight * 0.5); 
+
+    var beardYpos = responseFromServer.faceAnnotations[0].landmarks[28].position.y;
+    var beardXpos = (responseFromServer.faceAnnotations[0].landmarks[28].position.x);
+    $(".beard").css("margin-top",beardYpos); 
+    $(".beard").css("margin-left",beardXpos); 
+    $(".beard").css("width",faceWidth); 
+
+    var mustacheXpos = (responseFromServer.faceAnnotations[0].landmarks[8].position.x) - noselengthpixels;
+    var mustacheYpos = (responseFromServer.faceAnnotations[0].landmarks[8].position.y) - 20;
+
+
+    $(".mustache").css("margin-left",mustacheXpos); 
+    $(".mustache").css("margin-top",mustacheYpos); 
+    $(".mustache").css("width",noselengthpixels * 2); 
+
+    var glassesXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
+    var glassesYpos = responseFromServer.faceAnnotations[0].landmarks[26].position.y;
+
+    $(".glasses").css("margin-left",glassesXpos); 
+    $(".glasses").css("margin-top",glassesYpos); 
+   $(".glasses").css("height", faceHeight * 0.4);
+
+
       }, function errorCallback(response) {
        console.log(response);
       });
@@ -44,3 +96,4 @@ function MainController(Upload, API_URL,$http) {
 
 
 }
+

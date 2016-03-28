@@ -1,9 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:300,600,600italic,300italic);
 
-html {
-  border-left: 0.382rem solid red;
-  min-height: 100%;
-}
+
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -12,6 +9,77 @@ body {
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.5;
+}
+
+.margintop {
+margin-top: 100px;
+position: absolute;
+}
+
+.absolutediv {
+width: 900px;
+height: 600px;
+border: red 1px solid;
+position: absolute;
+display: block;
+z-index: 2;
+top: 0px;
+}
+
+
+.absolute img {
+  width: 900px;
+  position: absolute;
+  display: block;
+  z-index: 1;
+  top: 0px;
+}
+
+.hat {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  z-index: 6;
+}
+.necklace {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  z-index: 5;
+}
+
+.glasses {
+  height: 200px;
+  width: 200px;
+  margin-top: 241px;
+  margin-left: 407px;
+  position: absolute;
+  z-index: 7;
+}
+
+
+.mustache {
+  width: 120px;
+/*  margin-left: 364px;
+  margin-top: 300px; */
+  position: absolute;
+  z-index: 3;
+}
+.beard {
+ /* 
+ margin-left: 322px;
+  margin-top: 269px; 
+  width: 228;will be width of head*/
+  width: 120px;
+  position: absolute;
+  z-index: 4;
+
+}
+
+section {
+  position: relative;
+  margin-top: 650px;
+  
 }
 
 h1 {

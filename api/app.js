@@ -61,13 +61,13 @@ var upload = multer({ storage: storage })
 app.post('/upload/single', upload.single('file'), function(req, res) {
 
 console.log(req.file);
-	im.crop({
+	im.resize({
 	  srcPath: req.file.path,
 	  dstPath: req.file.destination + req.file.filename + '-cropped.jpg',
-	  width: 800,
-	  height: 600,
-	  quality: 1,
-	  gravity: "North"
+	  width: 900,
+	  height: 0, // height is irrelevant
+	  quality: 1
+	 // gravity: "North" dont know what it means
 	}, function(err, stdout, stderr){
   if (err) throw err;
   console.log('SUCCESS cropped ' + req.file.filename + ' .jpg to fit within 800x600px');
@@ -95,7 +95,7 @@ console.log(req.file);
 	 uploader.on('end', function() {
 	   console.log("done uploading");
 	   res.status(200).json({ filename: req.file.filename + '-cropped.jpg' });
-	   
+
 	 });
 /*  var params = {
      Bucket: 'faceoffhackathon',
