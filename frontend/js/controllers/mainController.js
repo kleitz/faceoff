@@ -14,15 +14,16 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
   self.mustacheshow = true;
   self.fatface = {};
   self.fatface.filestore = "./public/placeholder.jpg"
-  self.webcamCountDownText = "Take Photo from Webcam";
+  self.webcamCountDownText = "Take Photo?";
   self.showVideo = false;
   self.webcamRequestLogo = true;
   self.snapShotShow = false;
+  self.showLoadingSpinner = false;
 
 
   this.getVideo = function(){
     self.showVideo = true;
-    self.webcamCountDownText = "3 Seconds Until Photo is taken"
+    self.webcamCountDownText = "5 second/s left"
 
     console.log("get video function called");
   
@@ -38,15 +39,28 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
         video.src = window.URL.createObjectURL(stream);
         
 
-          function takephotointhreeseconds() {
-              console.log("3 seconds past, take photo");
+          function timesUpTakePhoto() {
+              console.log("5 seconds past, take photo");
               self.takephoto();
               self.showVideo = false;
               self.webcamRequestLogo = false;
               self.snapShotShow = true;
           }
 
-        $timeout(takephotointhreeseconds, 5000);
+          function countdownUpdate(){
+            if (i < 5){
+              console.log( i + "second/s passed");
+              self.webcamCountDownText = (5 - i) + " second/s left";
+              $timeout(countdownUpdate, 1000);
+              i++;
+            } else {
+              self.showLoadingSpinner = true;
+              timesUpTakePhoto();
+            }
+          }
+
+        var i = 0;
+        $timeout(countdownUpdate, 1000);
   
   }
   
@@ -83,6 +97,7 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
            console.log(response);
            console.log(response.data.filename);
            self.snapShotShow = false; // clear canvas
+           self.showLoadingSpinner = false; // get rid of spinner.
            self.fatface.filestore = "https://s3-eu-west-1.amazonaws.com/faceoffhackathon/" + response.data.filename;
            console.log(self.fatface.filestore);
            self.processImage()

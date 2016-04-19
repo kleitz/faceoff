@@ -29,13 +29,13 @@
   <img class="absolute" ng-src="{{main.fatface.filestore}}" />
   <div class="absolutediv"> 
   <video ng-show="main.showVideo" autoplay="true" id="videoElement">
-   
   </video>
   <canvas id="canvas" ng-show="main.snapShotShow">
   </canvas>
-  <webcamUpload ng-show="main.webcamRequestLogo" ng-click="main.getVideo()">
-    <i class="fa fa-camera webcamIcon" aria-hidden="true"></i>
-    <p>{{main.webcamCountDownText}}</p>
+  <webcamUpload ng-click="main.getVideo()">
+    <i ng-show="main.webcamRequestLogo" class="fa fa-camera webcamIcon" aria-hidden="true"></i>
+    <div ng-show="main.showLoadingSpinner" class="loading-spinner"></div>
+    <p ng-show="main.webcamRequestLogo">{{main.webcamCountDownText}}</p>
   </webcamUpload>
 
 
@@ -59,11 +59,11 @@
     <li><a  id="necklacebutton">Necklace</a></li>
     <li><a  id="glassesbutton">Glasses</a></li>
     <li><a  id="hairbutton">Hair</a></li>
-    <li><form name="main.form" ng-submit="main.uploadSingle()">
+    <li><a  ng-click="main.getVideo()">Retake photo?</a></li>
+<!--     <li><form name="main.form" ng-submit="main.uploadSingle()">
       <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
       <button type="submit">Upload photo</button>
-    </form></li>
-
+    </form></li> -->
   </ul>
   
 
@@ -126,8 +126,7 @@
     <!-- WEBCAM TESTS -->
 
 
-    <input type="file" accept="image/*;capture=camera">
-    
+
 
     <div class="output" ng-show="main.wantthistoshow">
       <img id="photo" alt="The screen capture will appear in this box.">
@@ -142,6 +141,8 @@
 
 
 
+  <div ng-show="main.theworldisenough"> <input type="file" accept="image/*;capture=camera"></div>
 </main>
+
 </body>
 </html>
