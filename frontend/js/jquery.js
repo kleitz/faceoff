@@ -9,11 +9,11 @@ $( document ).ready(function() {
     var hairNum = 0;
 
 
-    $( ".absoluteP" ).hide(); // hide all on load
+   $( ".absoluteP" ).hide(); // hide all on load
 
 
 
-
+/*
     $( "#afrobutton" ).click(function() {
 
         if($('#afro').is(':visible')) {
@@ -25,7 +25,7 @@ $( document ).ready(function() {
             $( "#afro" ).show();
         }
 
-    });
+    });*/
 
     $( "#hairbutton" ).click(function() {
 

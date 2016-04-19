@@ -4,8 +4,8 @@ angular
   .module('uploader')
   .controller('MainController', MainController);
 
-MainController.$inject = ['Upload', 'API_URL','$http', '$window'];
-function MainController(Upload, API_URL,$http, $window) {
+MainController.$inject = ['Upload', 'API_URL','$http', '$window', '$timeout'];
+function MainController(Upload, API_URL,$http, $window, $timeout) {
   var self = this;
 
   self.file = null;
@@ -14,11 +14,16 @@ function MainController(Upload, API_URL,$http, $window) {
   self.mustacheshow = true;
   self.fatface = {};
   self.fatface.filestore = "./public/placeholder.jpg"
-
-
+  self.webcamCountDownText = "Take Photo from Webcam";
+  self.showVideo = false;
+  self.webcamRequestLogo = true;
+  self.snapShotShow = false;
 
 
   this.getVideo = function(){
+    self.showVideo = true;
+    self.webcamCountDownText = "3 Seconds Until Photo is taken"
+
     console.log("get video function called");
   
     video = document.querySelector("#videoElement");
@@ -31,6 +36,17 @@ function MainController(Upload, API_URL,$http, $window) {
      
     function handleVideo(stream) {
         video.src = window.URL.createObjectURL(stream);
+        
+
+          function takephotointhreeseconds() {
+              console.log("3 seconds past, take photo");
+              self.takephoto();
+              self.showVideo = false;
+              self.webcamRequestLogo = false;
+              self.snapShotShow = true;
+          }
+
+        $timeout(takephotointhreeseconds, 5000);
   
   }
   
@@ -66,6 +82,7 @@ function MainController(Upload, API_URL,$http, $window) {
        }).then(function successCallback(response) {
            console.log(response);
            console.log(response.data.filename);
+           self.snapShotShow = false; // clear canvas
            self.fatface.filestore = "https://s3-eu-west-1.amazonaws.com/faceoffhackathon/" + response.data.filename;
            console.log(self.fatface.filestore);
            self.processImage()

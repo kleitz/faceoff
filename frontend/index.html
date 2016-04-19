@@ -1,10 +1,11 @@
 <html ng-app="uploader">
 <head>
-  <title>Angular Upload</title>
+  <title>Faceoff - Webcam & Image Toy</title>
   <!-- External Modules -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 
@@ -20,15 +21,31 @@
 <!-- <aside> -->
 <section>
 
+
+
+
+
+
   <img class="absolute" ng-src="{{main.fatface.filestore}}" />
   <div class="absolutediv"> 
+  <video ng-show="main.showVideo" autoplay="true" id="videoElement">
+   
+  </video>
+  <canvas id="canvas" ng-show="main.snapShotShow">
+  </canvas>
+  <webcamUpload ng-show="main.webcamRequestLogo" ng-click="main.getVideo()">
+    <i class="fa fa-camera webcamIcon" aria-hidden="true"></i>
+    <p>{{main.webcamCountDownText}}</p>
+  </webcamUpload>
+
+
     <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
     <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
     <img class="hat absoluteP" id="hat" src="./public/hat0.png" />
     <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
     <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
     <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
-    <img class="afro absoluteP" id="afro" src="./public/afro0.gif" />
+ <!--    <img class="afro absoluteP" id="afro" src="./public/afro0.gif" /> -->
   </div>
 </section>
 <!-- </aside> -->
@@ -42,16 +59,13 @@
     <li><a  id="necklacebutton">Necklace</a></li>
     <li><a  id="glassesbutton">Glasses</a></li>
     <li><a  id="hairbutton">Hair</a></li>
-    <li ng-click="main.getVideo()">Make Webcam</li>
-    <li ng-click="main.takephoto()">Take photo</li>
     <li><form name="main.form" ng-submit="main.uploadSingle()">
       <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
       <button type="submit">Upload photo</button>
     </form></li>
 
   </ul>
-
-
+  
 
 
 <!-- 
@@ -98,9 +112,6 @@
 
 
 <main class="margintop-sdsd">
-<video autoplay="true" id="videoElement">
- 
-</video>
 
 
   <div class="sidebar-ssd">
@@ -113,11 +124,11 @@
 
 
     <!-- WEBCAM TESTS -->
-    
+
+
     <input type="file" accept="image/*;capture=camera">
     
-    <canvas id="canvas" ng-show="main.wantthistoshow">
-    </canvas>
+
     <div class="output" ng-show="main.wantthistoshow">
       <img id="photo" alt="The screen capture will appear in this box.">
     </div>
