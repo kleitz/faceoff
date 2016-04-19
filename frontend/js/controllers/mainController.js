@@ -38,7 +38,7 @@ function MainController(Upload, API_URL,$http) {
   this.processImage = function(){
     $http({
       method: 'PUT',
-      url: 'http://localhost:3000/api/cloudvision',
+      url: '/api/cloudvision',
       data: {image: self.fatface.filestore}
     }).then(function successCallback(response) {
       console.log(response);
