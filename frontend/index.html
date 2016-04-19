@@ -15,7 +15,47 @@
 </head>
 <body ng-controller="MainController as main">
 
-  <!-- Navbar fixed top -->
+
+
+<!-- <aside> -->
+<section>
+
+  <img class="absolute" ng-src="{{main.fatface.filestore}}" />
+  <div class="absolutediv"> 
+    <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
+    <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
+    <img class="hat absoluteP" id="hat" src="./public/hat0.png" />
+    <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
+    <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
+    <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
+    <img class="afro absoluteP" id="afro" src="./public/afro0.gif" />
+  </div>
+</section>
+<!-- </aside> -->
+<input type="checkbox" id="menu-toggle"/>
+  <label id="trigger" for="menu-toggle"></label>
+  <label id="burger" for="menu-toggle"></label>
+  <ul id="menu">
+    <li><a  id="beardbutton">Beard</a></li>
+    <li><a  id="mustaschebutton">Mustasche</a></li>
+    <li><a  id="hatbutton">Hat</a></li>
+    <li><a  id="necklacebutton">Necklace</a></li>
+    <li><a  id="glassesbutton">Glasses</a></li>
+    <li><a  id="hairbutton">Hair</a></li>
+    <li ng-click="main.getVideo()">Make Webcam</li>
+    <li ng-click="main.takephoto()">Take photo</li>
+    <li><form name="main.form" ng-submit="main.uploadSingle()">
+      <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
+      <button type="submit">Upload photo</button>
+    </form></li>
+
+  </ul>
+
+
+
+
+<!-- 
+
   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -29,7 +69,7 @@
       </div>
       <div class="navbar-collapse collapse">
 
-        <!-- Left nav -->
+      
           <ul class="nav navbar-nav">
             <li><a  id="beardbutton">Beard</a></li>
             <li><a  id="mustaschebutton">Mustasche</a></li>
@@ -46,7 +86,7 @@
     </li>
   </ul>
 </li>
-</ul>
+</ul> -->
 
 <!-- Right nav -->
 
@@ -57,30 +97,22 @@
 
 
 
-<main class="margintop">
+<main class="margintop-sdsd">
 <video autoplay="true" id="videoElement">
  
 </video>
 
 
-  <div class="sidebar">
+  <div class="sidebar-ssd">
 
 
 
 
 
-    <h3>------Upload Photo--------</h3>
-    Upload single file on form submit
-    <form name="main.form" ng-submit="main.uploadSingle()">
-      <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
-      <button type="submit">Upload photo</button>
-    </form>
+   
 
 
     <!-- WEBCAM TESTS -->
-
-    <button ng-click="main.getVideo()">Make Webcam</button>
-    <button id="startbutton" ng-click="main.takephoto()">Take photo</button>
     
     <input type="file" accept="image/*;capture=camera">
     
@@ -95,19 +127,7 @@
 
   </div>
 
-  <section>
 
-    <img class="absolute" ng-src="{{main.fatface.filestore}}" />
-    <div class="absolutediv"> 
-      <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
-      <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
-      <img class="hat absoluteP" id="hat" src="./public/hat0.png" />
-      <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
-      <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
-      <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
-      <img class="afro absoluteP" id="afro" src="./public/afro0.gif" />
-    </div>
-  </section>
 
 
 
