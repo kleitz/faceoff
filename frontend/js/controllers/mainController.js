@@ -1,3 +1,4 @@
+responseFromServer = {};
 
 angular
   .module('uploader')
@@ -12,6 +13,7 @@ function MainController(Upload, API_URL,$http) {
   self.beardshow = true;
   self.mustacheshow = true;
   self.fatface = {};
+  self.fatface.filestore = "./public/placeholder.jpg"
 
   
   this.uploadSingle = function() {
@@ -31,9 +33,6 @@ function MainController(Upload, API_URL,$http) {
       console.error(err);
     });
   }
-
-
-  var responseFromServer = {};
 
   this.processImage = function(){
     $http({
@@ -58,16 +57,25 @@ function MainController(Upload, API_URL,$http) {
      $(".hat").css("margin-top",hatYpos); 
      $(".hat").css("margin-left",hatXpos - (faceWidth * 0.2)); 
      $(".hat").css("width",faceWidth * 1.4); 
-     $(".hat").css("height",faceHeight * 0.5); 
+     $(".hat").css("height",faceHeight * 0.6); 
 
 
 
      hairYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y;
      hairXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
-     $(".hair").css("margin-top",hairYpos - 100); 
-     $(".hair").css("margin-left",hairXpos - (faceWidth * 0.2)); 
-     $(".hair").css("width",faceWidth * 1.4); 
-     $(".hair").css("height",faceHeight); 
+     $(".hair").css("margin-top",hairYpos - (faceHeight * 0.5)); 
+     $(".hair").css("margin-left",hairXpos - (faceWidth * 0.1)); 
+     $(".hair").css("width",faceWidth * 1.2); 
+     $(".hair").css("height",faceHeight * 0.9); 
+
+
+     afroYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y;
+     afroXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
+     $(".afro").css("margin-top",afroYpos - (faceHeight * 1)); 
+     $(".afro").css("margin-left",afroXpos - (faceWidth * 0.5)); 
+     $(".afro").css("width",faceWidth * 2); 
+     $(".afro").css("height",faceHeight * 1.4); 
+
 
 
      necklaceXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x
@@ -108,4 +116,3 @@ function MainController(Upload, API_URL,$http) {
 
 
 }
-

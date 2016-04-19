@@ -30,23 +30,19 @@
       <div class="navbar-collapse collapse">
 
         <!-- Left nav -->
-        <ul class="nav navbar-nav">
-          <li><a href="#" id="beardbutton">Beard Toggle</a></li>
-          <li><a href="#" id="mustaschebutton">Mustasche Toggle</a></li>
-          <li><a href="#" id="hatbutton">hat Toggle</a></li>
-          <li><a href="#" id="necklacebutton">Necklace Toggle</a></li>
-          <li><a href="#" id="glassesbutton">Glasses Toggle</a></li>
-          <li><a href="#" id="hairbutton">Hair Toggle</a></li>
-          <li><a href="#">Nose takes up: {{main.fatface.nose}} %</a></li>
+          <ul class="nav navbar-nav">
+            <li><a  id="beardbutton">Beard</a></li>
+            <li><a  id="mustaschebutton">Mustasche</a></li>
+            <li><a  id="hatbutton">Hat</a></li>
+            <li><a  id="necklacebutton">Necklace</a></li>
+            <li><a  id="glassesbutton">Glasses</a></li>
+            <li><a  id="hairbutton">Hair</a></li>
+            <li><a  id="afrobutton">Afro</a></li>
 
+            <li ng-class="{bignoseRED: (main.fatface.nose > 26),bignoseGREEN: (main.fatface.nose < 24), bignoseAMBER: (main.fatface.nose > 24 && main.fatface.nose < 26)}"><a>Nose takes up: {{main.fatface.nose | number : fractionSize}} %</a></li>
 
-
-
-          
-        </li>
-        
-        
-      </ul>
+          </li>
+        </ul>
     </li>
   </ul>
 </li>
@@ -92,6 +88,7 @@
       <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
       <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
       <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
+      <img class="afro absoluteP" id="afro" src="./public/afro0.gif" />
     </div>
   </section>
 

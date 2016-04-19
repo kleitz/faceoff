@@ -6,10 +6,19 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   font-size: 16px;
-  max-width: 700px;
+max-width: 900px;
     margin: 0 auto;
   line-height: 1.5;
   background-color: #F7F0F0;
+}
+
+h3 {
+  text-align: center;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  font-family: 'Oswald', sans-serif;
 }
 
 section {
@@ -35,6 +44,7 @@ top: 0px;
 
 
 .absolute img {
+
   width: 900px;
   position: absolute;
   display: block;
@@ -72,7 +82,15 @@ top: 0px;
   position: absolute;
   z-index: 6;
 }
+.afro {
+  height: 200px;
+  width: 200px;
 
+  position: absolute;
+  z-index: 8;
+}
+
+li { cursor: pointer; cursor: hand; }
 
 .mustache {
   width: 120px;
@@ -93,8 +111,33 @@ top: 0px;
 }
 
 .sidebar {
-margin-left: 0;
-left: 0;
+margin: auto 0;
+margin: 0 auto;
+margin-left: 300px;
+position: relative;
+display: block;
+text-align: center;
+margin-bottom: 100px;
+
+}
+
+.bignoseRED {
+  background-color: red;
+
+ animation: blinker 1s linear infinite;
+}
+.bignoseGREEN {
+background-color: green;
+}
+
+.bignoseAMBER {
+background-color: #FFBF00;
+}
+
+
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
 }
 
 h1 {
@@ -111,4 +154,3 @@ h1:after {
   position: relative;
   top: -0.618rem;
 }
-
