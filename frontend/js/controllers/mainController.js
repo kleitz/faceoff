@@ -1,6 +1,4 @@
 
-responseFromServer = {};
-
 angular
   .module('uploader')
   .controller('MainController', MainController);
@@ -18,7 +16,7 @@ function MainController(Upload, API_URL,$http) {
   
   this.uploadSingle = function() {
     Upload.upload({
-      url: API_URL + '/upload/single',
+      url: '/upload/single',
       data: { file: self.file }
     })
     .then(function(res) {
@@ -33,6 +31,9 @@ function MainController(Upload, API_URL,$http) {
       console.error(err);
     });
   }
+
+
+  var responseFromServer = {};
 
   this.processImage = function(){
     $http({

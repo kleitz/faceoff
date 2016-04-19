@@ -1,4 +1,3 @@
-//require("node-cloud-vision-api")
 
 const vision = require('node-cloud-vision-api')
 'use strict'

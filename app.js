@@ -10,6 +10,11 @@ var app = express();
 var im = require('imagemagick');
 var AWS = require('aws-sdk');
 var s3 = require('s3');
+var fs = require('fs')
+
+app.set("views", __dirname + "/frontend");
+app.set("view engine", "ejs");
+app.use(express.static(__dirname + "/frontend"));
  
 var client = s3.createClient({
   maxAsyncS3: 20,     // this is the default 
@@ -43,9 +48,11 @@ var routes = require('./config/routes');
 
 
 
+
+
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, '../frontend/public/uploads/');
+    callback(null, './frontend/public/uploads/');
   },
   filename: function (req, file, callback) {
     callback(null, file.fieldname + '-' + Date.now());
@@ -74,6 +81,10 @@ console.log(req.file);
 
  // croppedFileAddress = req.file.destination + req.file.filename + '-cropped.jpg';
 
+    var LocalFile = "./frontend/public/uploads/" + req.file.filename;
+    var LocalFileCropped = "./frontend/public/uploads/" + req.file.filename + '-cropped.jpg';
+
+    
 
 	 var params = {
 	   localFile: req.file.destination + req.file.filename + '-cropped.jpg', //"some/local/file",
@@ -97,29 +108,35 @@ console.log(req.file);
 	   res.status(200).json({ filename: req.file.filename + '-cropped.jpg' });
 
 	 });
-/*  var params = {
-     Bucket: 'faceoffhackathon',
-     Key: req.file.destination + req.file.filename + '-cropped.jpg',
-     Body: "Nothing needed here"
-   };
 
-   s3.putObject(params, function (perr, pres) {
-     if (perr) {
-       console.log("Error uploading data: ", perr);
-     } else {
-       console.log("Successfully uploaded data to myBucket/myKey");
-
-       res.status(200).json({ filename: "hello world" });
-     }
-   });
-});*/
 
 	}); // end of image magic callback
+
+/*  fs.exists(LocalFileCropped, function(exists) {
+    if(exists) {
+      console.log('File exists. Deleting now ...');
+      fs.unlink(LocalFileCropped);
+    } else {
+      console.log('File not found, so not deleting.');
+    }
+  });
+
+  fs.exists(LocalFile, function(exists) {
+    if(exists) {
+      console.log('File exists. Deleting now ...');
+      fs.unlink(LocalFileCropped);
+    } else {
+      console.log('File not found, so not deleting.');
+    }
+  });*/
 
 });
 
 
 
+app.get('/', function(req, res, next) {
+  res.render('index');
+});
 
 app.use(routes);
 

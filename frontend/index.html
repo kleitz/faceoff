@@ -5,7 +5,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
 
   <!-- Internal Modules -->
@@ -15,66 +15,66 @@
 </head>
 <body ng-controller="MainController as main">
 
-<!-- Navbar fixed top -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Face-off</a>
-    </div>
-    <div class="navbar-collapse collapse">
-  
-      <!-- Left nav -->
-      <ul class="nav navbar-nav">
-        <li><a href="#" id="beardbutton">Beard Toggle</a></li>
-        <li><a href="#" id="mustaschebutton">Mustasche Toggle</a></li>
-        <li><a href="#" id="hatbutton">hat Toggle</a></li>
-        <li><a href="#" id="necklacebutton">Necklace Toggle</a></li>
-        <li><a href="#" id="glassesbutton">Glasses Toggle</a></li>
-        <li><a href="#" id="hairbutton">Hair Toggle</a></li>
-        <li><a href="#">Nose takes up: {{main.fatface.nose}} %</a></li>
+  <!-- Navbar fixed top -->
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Face-off</a>
+      </div>
+      <div class="navbar-collapse collapse">
+
+        <!-- Left nav -->
+        <ul class="nav navbar-nav">
+          <li><a href="#" id="beardbutton">Beard Toggle</a></li>
+          <li><a href="#" id="mustaschebutton">Mustasche Toggle</a></li>
+          <li><a href="#" id="hatbutton">hat Toggle</a></li>
+          <li><a href="#" id="necklacebutton">Necklace Toggle</a></li>
+          <li><a href="#" id="glassesbutton">Glasses Toggle</a></li>
+          <li><a href="#" id="hairbutton">Hair Toggle</a></li>
+          <li><a href="#">Nose takes up: {{main.fatface.nose}} %</a></li>
 
 
 
 
-            
-                </li>
-       
-            
-              </ul>
-            </li>
-          </ul>
+          
         </li>
+        
+        
       </ul>
-  
-      <!-- Right nav -->
-   
-  
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
+    </li>
+  </ul>
+</li>
+</ul>
+
+<!-- Right nav -->
+
+
+</div><!--/.nav-collapse -->
+</div><!--/.container -->
 </div>
 
 
 
 <main class="margintop">
 
-<div class="sidebar">
+  <div class="sidebar">
 
 
 
 
 
-<h3>------Upload Photo--------</h3>
-  Upload single file on form submit
-  <form name="main.form" ng-submit="main.uploadSingle()">
-    <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
-    <button type="submit">Upload photo</button>
-  </form>
+    <h3>------Upload Photo--------</h3>
+    Upload single file on form submit
+    <form name="main.form" ng-submit="main.uploadSingle()">
+      <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
+      <button type="submit">Upload photo</button>
+    </form>
 
 
 
@@ -82,18 +82,18 @@
 
   </div>
 
-<section>
+  <section>
 
-<img class="absolute" ng-src="{{main.fatface.filestore}}" />
-<div class="absolutediv"> 
-<img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
-<img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
-<img class="hat absoluteP" id="hat" src="./public/hat0.png" />
-<img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
-<img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
-<img class="hair absoluteP" id="hair" src="./public/hair0.png" />
-</div>
-</section>
+    <img class="absolute" ng-src="{{main.fatface.filestore}}" />
+    <div class="absolutediv"> 
+      <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
+      <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
+      <img class="hat absoluteP" id="hat" src="./public/hat0.png" />
+      <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
+      <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
+      <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
+    </div>
+  </section>
 
 
 

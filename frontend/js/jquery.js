@@ -1,6 +1,8 @@
 $( document ).ready(function() {
     console.log( "jquery ready!" );
 
+    responseFromServer = {};
+
     var mustacheNum = 0;
     var beardNum = 0;
     var hatNum = 0;
