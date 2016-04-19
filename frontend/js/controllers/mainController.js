@@ -4,8 +4,8 @@ angular
   .module('uploader')
   .controller('MainController', MainController);
 
-MainController.$inject = ['Upload', 'API_URL','$http'];
-function MainController(Upload, API_URL,$http) {
+MainController.$inject = ['Upload', 'API_URL','$http', '$window'];
+function MainController(Upload, API_URL,$http, $window) {
   var self = this;
 
   self.file = null;
@@ -14,6 +14,71 @@ function MainController(Upload, API_URL,$http) {
   self.mustacheshow = true;
   self.fatface = {};
   self.fatface.filestore = "./public/placeholder.jpg"
+
+
+
+
+  this.getVideo = function(){
+    console.log("get video function called");
+  
+    video = document.querySelector("#videoElement");
+     
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+     
+    if (navigator.getUserMedia) {       
+        navigator.getUserMedia({video: true}, handleVideo, videoError);
+    }
+     
+    function handleVideo(stream) {
+        video.src = window.URL.createObjectURL(stream);
+  
+  }
+  
+    function videoError(e) {
+        // do something
+    }
+    
+  }
+  
+  this.takephoto = function() {
+      var context = canvas.getContext('2d');
+      if (video.videoWidth && video.videoHeight) {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+      
+        var data = canvas.toDataURL('image/png');
+        photo.setAttribute('src', data);
+
+
+       // var imgData = canvas.toDataURL("img/png");
+       data = data.replace('data:image/png;base64,', '');
+
+/*      Upload.upload({
+         url: '/upload/single',
+         data: data
+       })*/
+
+    $http({
+         method: 'POST',
+         url: '/imageupload',
+         data: {file: data}
+       }).then(function successCallback(response) {
+           console.log(response);
+           console.log(response.data.filename);
+           self.fatface.filestore = "https://s3-eu-west-1.amazonaws.com/faceoffhackathon/" + response.data.filename;
+           console.log(self.fatface.filestore);
+           self.processImage()
+         }, function errorCallback(response) {
+           console.log(response);
+         });
+       
+      } else {
+       // clearphoto();
+     console.log("something ERROR happened");
+   }
+  }
+  
 
   
   this.uploadSingle = function() {

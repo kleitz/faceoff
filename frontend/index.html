@@ -58,6 +58,10 @@
 
 
 <main class="margintop">
+<video autoplay="true" id="videoElement">
+ 
+</video>
+
 
   <div class="sidebar">
 
@@ -73,6 +77,19 @@
     </form>
 
 
+    <!-- WEBCAM TESTS -->
+
+    <button ng-click="main.getVideo()">Make Webcam</button>
+    <button id="startbutton" ng-click="main.takephoto()">Take photo</button>
+    
+    <input type="file" accept="image/*;capture=camera">
+    
+    <canvas id="canvas" ng-show="main.wantthistoshow">
+    </canvas>
+    <div class="output" ng-show="main.wantthistoshow">
+      <img id="photo" alt="The screen capture will appear in this box.">
+    </div>
+    
 
 
 
