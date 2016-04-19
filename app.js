@@ -31,9 +31,7 @@ var client = s3.createClient({
 });
 
 
-var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/faceoff2');
 
 app.use(cors());
 app.use(express.static('public'));
