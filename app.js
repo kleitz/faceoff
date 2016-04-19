@@ -81,8 +81,8 @@ console.log(req.file);
 
  // croppedFileAddress = req.file.destination + req.file.filename + '-cropped.jpg';
 
-    var LocalFile = "./frontend/public/uploads/" + req.file.filename;
-    var LocalFileCropped = "./frontend/public/uploads/" + req.file.filename + '-cropped.jpg';
+     LocalFile = "./frontend/public/uploads/" + req.file.filename;
+     LocalFileCropped = req.file.destination + req.file.filename + '-cropped.jpg';
 
     
 
@@ -105,6 +105,27 @@ console.log(req.file);
 	 });
 	 uploader.on('end', function() {
 	   console.log("done uploading");
+
+     // delete local files
+     fs.exists(LocalFileCropped, function(exists) {
+       if(exists) {
+         console.log('File exists. Deleting now ...');
+         fs.unlink(LocalFileCropped);
+       } else {
+         console.log('File not found, so not deleting.');
+       }
+     });
+
+     fs.exists(LocalFile, function(exists) {
+       if(exists) {
+         console.log('File exists. Deleting now ...');
+         fs.unlink(LocalFile);
+       } else {
+         console.log('File not found, so not deleting.');
+       }
+     });
+
+
 	   res.status(200).json({ filename: req.file.filename + '-cropped.jpg' });
 
 	 });
@@ -112,23 +133,6 @@ console.log(req.file);
 
 	}); // end of image magic callback
 
-/*  fs.exists(LocalFileCropped, function(exists) {
-    if(exists) {
-      console.log('File exists. Deleting now ...');
-      fs.unlink(LocalFileCropped);
-    } else {
-      console.log('File not found, so not deleting.');
-    }
-  });
-
-  fs.exists(LocalFile, function(exists) {
-    if(exists) {
-      console.log('File exists. Deleting now ...');
-      fs.unlink(LocalFileCropped);
-    } else {
-      console.log('File not found, so not deleting.');
-    }
-  });*/
 
 });
 
