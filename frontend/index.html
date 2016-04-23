@@ -3,6 +3,7 @@
   <title>Faceoff - Webcam & Image Toy</title>
   <!-- External Modules -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script src="http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -11,138 +12,94 @@
 
   <!-- Internal Modules -->
   <script src="./js/app.js"></script>
+  <script src="./js/skroller.js"></script>
   <script src="./js/jquery.js"></script>
   <script src="./js/controllers/mainController.js"></script>
 </head>
 <body ng-controller="MainController as main">
 
-
-
-<!-- <aside> -->
-<section>
-
-
-
-
-
-
-  <img class="absolute" ng-src="{{main.fatface.filestore}}" />
-  <div class="absolutediv"> 
-  <video ng-show="main.showVideo" autoplay="true" id="videoElement">
-  </video>
-  <canvas id="canvas" ng-show="main.snapShotShow">
-  </canvas>
-  <webcamUpload ng-click="main.getVideo()">
-    <i ng-show="main.webcamRequestLogo" class="fa fa-camera webcamIcon" aria-hidden="true"></i>
-    <div ng-show="main.showLoadingSpinner" class="loading-spinner"></div>
-    <p ng-show="main.webcamRequestLogo">{{main.webcamCountDownText}}</p>
-  </webcamUpload>
-
-
-    <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
-    <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
-    <img class="hat absoluteP" id="hat" src="./public/hat0.png" />
-    <img class="necklace absoluteP" id="necklace" src="./public/necklace0.png" />
-    <img class="glasses absoluteP" id="glasses" src="./public/glasses0.png" />
-    <img class="hair absoluteP" id="hair" src="./public/hair0.png" />
- <!--    <img class="afro absoluteP" id="afro" src="./public/afro0.gif" /> -->
-  </div>
-</section>
-<!-- </aside> -->
-<input type="checkbox" id="menu-toggle"/>
-  <label id="trigger" for="menu-toggle"></label>
-  <label id="burger" for="menu-toggle"></label>
-  <ul id="menu">
-    <li><a  id="beardbutton">Beard</a></li>
-    <li><a  id="mustaschebutton">Mustasche</a></li>
-    <li><a  id="hatbutton">Hat</a></li>
-    <li><a  id="necklacebutton">Necklace</a></li>
-    <li><a  id="glassesbutton">Glasses</a></li>
-    <li><a  id="hairbutton">Hair</a></li>
-    <li><a  ng-click="main.getVideo()">Retake photo?</a></li>
-<!--     <li><form name="main.form" ng-submit="main.uploadSingle()">
-      <input type="file"ngf-select ng-model="main.file" name="file">Select photo</div>
-      <button type="submit">Upload photo</button>
-    </form></li> -->
-  </ul>
+<div class="container"  id="skrollr-body" data-0="background-color:rgb(0,201,147);"data-400="background-color:rgb(74,173,255);" data-1000="background-color:rgb(74,173,255);"data-1300="background-color:rgb(0,201,147);">
+  <h1><i class="icon-circle-blank"></i></h1>
+  <h2>BLUE POND</h2>
+  <p> it's coming to your smartphone </p>
   
+  <a class="arrow" href="#anchor1"><i class="icon-sort-down"></i></a>
+  </p>
 
-
-<!-- 
-
-  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Face-off</a>
-      </div>
-      <div class="navbar-collapse collapse">
-
+<div class="section" id="sect1">
+  <div class="anchor" id="anchor1"></div>
+  <div id="hiddenIcon">
+    <i class="icon-mobile-phone"></i>
+        </div>
+  <div id="phone" data-0="margin-left: -20%; opacity:0" data-350="margin-left: 10%; opacity:1">
+    
+    <div id="topBar">
+      <p>Press--->  <i class="icon-bookmark"></i>         </p>
+       </div>
+    <div id="screen"> 
+      <div id="map">    
+          <img id="placemark" class="notPlacemarked" src="http://s.cdpn.io/52524/CircleMarkerTest3.png">    
+      </div><!--/ map-->   
+    </div><!--/ screen-->
+    </div><!--/ phone-->
+  <div class="explanation" data-300="opacity: 0" data-350="opacity: 1">
+  <h2>Right where you are</h2>
+    <p>Play at home, while you eat, while you poop, and while you walk. Actually, better to look at the street while you walk.</p>
+    <a class="arrow" href="#anchor2"><i class="icon-sort-down"></i></a>
+    </div><!--/ explanation-->
+  </div><!--/ sect1-->
+  
+  <div class="section" id="sect2">
+    <div class="anchor" id="anchor2"></div>
+    <div id="hiddenIcon">
+    <i class="icon-twitter"></i>
+        </div>
+    <div id="twitter"  data-600="margin-top: -20%; opacity: 0" data-1000="margin-top: 0; opacity:1">
+    <i class="icon-twitter"></i>
+    </div>
+    <div class="explanation" data-850=" opacity: 0" data-900=" opacity:1">
+    <h2>Share your score on Twitter</h2>
+    <p>I don't think you'll ever get to my score. But you can try anyway. Looser. </p>
+      <a class="arrow" href="#anchor3"><i class="icon-sort-down"></i></a>
+    </div><!--/ explanation-->
+  </div><!--sect2-->
+  
+    <div class="section" id="sect3">
+    <div class="anchor" id="anchor3"></div>
+      <div id="hiddenIcon">
+    <i class="icon-rocket icon-rotate-180"></i>
+        <p></p>
+        </div>
+    <div class="explanation-right" data-1350=" opacity: 0" data-1400=" opacity:1">
+    <h2>It's here already!</h2>
+    <p>Leave your email address. Wait, why? Just get it on the <a href="https://itunes.apple.com/us/app/blue-pond/id939850886?ls=1&mt=8">App Store</a> and <a href="https://play.google.com/store/apps/details?id=com.damianogui.bluepond">Play Store</a></p>
       
-          <ul class="nav navbar-nav">
-            <li><a  id="beardbutton">Beard</a></li>
-            <li><a  id="mustaschebutton">Mustasche</a></li>
-            <li><a  id="hatbutton">Hat</a></li>
-            <li><a  id="necklacebutton">Necklace</a></li>
-            <li><a  id="glassesbutton">Glasses</a></li>
-            <li><a  id="hairbutton">Hair</a></li>
-            <li><a  id="afrobutton">Afro</a></li>
+<!-- Begin MailChimp Signup Form -->
 
-            <li ng-class="{bignoseRED: (main.fatface.nose > 26),bignoseGREEN: (main.fatface.nose < 24), bignoseAMBER: (main.fatface.nose > 24 && main.fatface.nose < 26)}"><a>Nose takes up: {{main.fatface.nose | number : fractionSize}} %</a></li>
-
-          </li>
-        </ul>
-    </li>
-  </ul>
-</li>
-</ul> -->
-
-<!-- Right nav -->
-
-
-</div><!--/.nav-collapse -->
-</div><!--/.container -->
+<div id="mc_embed_signup">
+<form action="http://www.damianogui.com/2014/01/Bluepond/">
+  
+  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="me@example.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'me@example.com'" required>
+  <div><input type="submit" value="I want it!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
 </div>
 
-
-
-<main class="margintop-sdsd">
-
-
-  <div class="sidebar-ssd">
-
-
-
-
-
-   
-
-
-    <!-- WEBCAM TESTS -->
-
-
-
-
-    <div class="output" ng-show="main.wantthistoshow">
-      <img id="photo" alt="The screen capture will appear in this box.">
-    </div>
-    
-
-
-
+<!--End mc_embed_signup-->
+    </div><!--/ explanation-->
+      <div id="rocket" data-1100="margin-top:-300px; margin-right:0%; opacity: 0" data-1400="margin-top:50; margin-right:20%; opacity:1">
+    <i class="icon-rocket icon-rotate-180"></i>
+    </div><!--/ rocket-->
+  </div><!--sect2-->
+<div class="section" id="footer">
+  <p> thank you and follow <a href="https://twitter.com/damianogui">@damianogui</a></p>
   </div>
+</div><!--/ band-->
 
 
 
 
 
-  <div ng-show="main.theworldisenough"> <input type="file" accept="image/*;capture=camera"></div>
-</main>
+
 
 </body>
 </html>

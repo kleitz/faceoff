@@ -19,10 +19,7 @@ const request = new vision.Request({
     url: imageURL //'https://scontent-nrt1-1.cdninstagram.com/hphotos-xap1/t51.2885-15/e35/12353236_1220803437936662_68557852_n.jpg'
   }),
   features: [
-    new vision.Feature('FACE_DETECTION', 1),
-    new vision.Feature('LABEL_DETECTION', 10),
-    new vision.Feature('SAFE_SEARCH_DETECTION', 10),
-    new vision.Feature('IMAGE_PROPERTIES', 10),
+    new vision.Feature('FACE_DETECTION', 1)
   ]
 })
 
