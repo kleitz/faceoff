@@ -1,11 +1,11 @@
 responseFromServer = {};
 
 angular
-  .module('uploader')
+  .module('App')
   .controller('MainController', MainController);
 
-MainController.$inject = ['Upload', 'API_URL','$http', '$window', '$timeout'];
-function MainController(Upload, API_URL,$http, $window, $timeout) {
+MainController.$inject = ['API_URL','$http', '$window', '$timeout', '$scope'];
+function MainController( API_URL,$http, $window, $timeout, $scope) {
   var self = this;
 
   self.file = null;
@@ -20,6 +20,29 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
   self.snapShotShow = false;
   self.showLoadingSpinner = false;
 
+
+    self.chart = [
+        {
+            value: 0,
+            color:"#F7464A",
+            highlight: "#FF5A5E",
+            label: "Nose % "
+        },
+        {
+            value: 0,
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "Eyes %"
+        },
+        {
+            value: 0,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "Mouth %"
+        }
+    ]
+console.log(self.chart)
+HelloWorld = self.chart
 
   this.getVideo = function(){
     self.showVideo = true;
@@ -113,7 +136,7 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
   
 
   
-  this.uploadSingle = function() {
+  /*this.uploadSingle = function() {
     Upload.upload({
       url: '/upload/single',
       data: { file: self.file }
@@ -129,7 +152,7 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
     .catch(function(err) {
       console.error(err);
     });
-  }
+  }*/
 
   this.processImage = function(){
     $http({
@@ -148,6 +171,20 @@ function MainController(Upload, API_URL,$http, $window, $timeout) {
      noselengthpixels = (responseFromServer.faceAnnotations[0].landmarks[7].position.y) - (responseFromServer.faceAnnotations[0].landmarks[6].position.y)
      noseLengthPercentage = (noselengthpixels / faceHeight) * 100;
      self.fatface.nose = noseLengthPercentage;
+
+     eyesWidthpixels = (responseFromServer.faceAnnotations[0].landmarks[22].position.x) - (responseFromServer.faceAnnotations[0].landmarks[19].position.x);
+     eyesWidthPercentage = (eyesWidthpixels / faceWidth) * 100;
+     self.fatface.eyes = eyesWidthPercentage;
+
+
+     mouthWidthpixels = (responseFromServer.faceAnnotations[0].landmarks[11].position.x) - (responseFromServer.faceAnnotations[0].landmarks[10].position.x);
+     mouthWidthPercentage = (mouthWidthpixels / faceWidth) * 100;
+     self.fatface.mouth = mouthWidthPercentage;
+
+
+     self.chart[0].value = self.fatface.nose; // set chart
+     self.chart[2].value = self.fatface.mouth; // set chart
+     self.chart[1].value = self.fatface.eyes; // set chart
 
      hatYpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].y - (faceHeight * 0.5);
      hatXpos = responseFromServer.faceAnnotations[0].fdBoundingPoly.vertices[0].x

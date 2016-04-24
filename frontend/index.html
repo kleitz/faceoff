@@ -1,15 +1,17 @@
-<html ng-app="uploader">
+<html ng-app="App">
 <head>
   <title>Faceoff - Webcam & Image Toy</title>
   <!-- External Modules -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1-beta.2/Chart.min.js"></script>
+  <script src="./js/angular.min.js"></script>
+  <script src="./js/angles.js"></script>
   <script src="./js/mapbox.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="./js/jquery.min.js"></script>
+  <script src="./bower_components/ng-file-upload/ng-file-upload.min.js"></script>>
+ <link rel="stylesheet" href="./css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="./css/style.css">
-
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   <!-- Internal Modules -->
   <script src="./js/app.js"></script>
   <script src="./js/skroller.js"></script>
@@ -63,29 +65,36 @@
     <i class="icon-twitter"></i>
         </div>
     <div id="twitter"  data-600="margin-top: -20%; opacity: 0" data-1000="margin-top: 0; opacity:1">
-    <i class="icon-twitter"></i>
+    <i class="fa fa-pie-chart"></i>
     </div>
     <div class="explanation" data-850=" opacity: 0" data-900=" opacity:1">
     <h2>Ok these are the results</h2>
-    <p>I don't think you'll ever get to my score. But you can try anyway. Looser. </p>
+  
+    <!-- https://github.com/gonewandering/angles -->
+<container class="chartsContainer">
+  <canvas chart="Doughnut" legend=false options="options" data="main.chart" width="300" height="300"></canvas>
+</container>
 
-    
+
+
       <a class="arrow" href="#anchor3"><i class="icon-sort-down"></i></a>
     </div><!--/ explanation-->
   </div><!--sect2-->
   
     <div class="section" id="sect3">
     <div class="anchor" id="anchor3"></div>
-    <span class="facetext">And this is your face with silly hats etc?
-    <li><a  id="beardbutton">Beard</a></li>
-    <li><a  id="mustaschebutton">Mustasche</a></li>
-    <li><a  id="hatbutton">Hat</a></li>
-    <li><a  id="necklacebutton">Necklace</a></li>
-    <li><a  id="glassesbutton">Glasses</a></li>
-    <li><a  id="hairbutton">Hair</a></li></span>
+    <container id="facesection"></section>
+      <span class="facetext">And this is your face</span>
+      <li><a  id="beardbutton">Beard</a></li>
+      <li><a  id="mustaschebutton">Mustasche</a></li>
+      <li><a  id="hatbutton">Hat</a></li>
+      <li><a  id="necklacebutton">Necklace</a></li>
+      <li><a  id="glassesbutton">Glasses</a></li>
+      <li><a  id="hairbutton">Hair</a></li>
+    </container>
     <section>
-    <img ng-src="{{main.fatface.filestore}}" width="400px" height="300px" style="display: inline; z-index: 1;"/>
-   <div class="absolutediv"> 
+    <div class="FaceimageBox"> <img ng-src="{{main.fatface.filestore}}" width="400px" height="300px" /></div>
+   <div class="absolutediv"> </div>
        <img class="beard absoluteP" id="beard"  src="./public/beard0.png" />
        <img class="mustache absoluteP" id="mustache" src="./public/mustache0.png" />
        <img class="hat absoluteP" id="hat" src="./public/hat0.png" />

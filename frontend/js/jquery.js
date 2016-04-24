@@ -9,7 +9,7 @@ $( document ).ready(function() {
     var hairNum = 0;
 
 
-   $( ".absoluteP" ).hide(); // hide all on load
+   $( ".absoluteP" ).show(); // hide all on load
 /*   $("#hat").show();
    $("#mustache").show();*/
 
@@ -139,7 +139,41 @@ $( document ).ready(function() {
     });
 
 
-  
+    /* FOR CHART.JS*/
+/*  
+  var data = [
+      {
+          value: 300,
+          color:"#F7464A",
+          highlight: "#FF5A5E",
+          label: "Nose"
+      },
+      {
+          value: 50,
+          color: "#46BFBD",
+          highlight: "#5AD3D1",
+          label: "Eyes"
+      },
+      {
+          value: 100,
+          color: "#FDB45C",
+          highlight: "#FFC870",
+          label: "Mouth"
+      },
+
+      {
+          value: 45,
+          color: "#aa9df3",
+          highlight: "#aa9df3",
+          label: "Ears"
+      }
+  ]
+  var ctx = document.getElementById("myChart").getContext("2d");
+  var myNewChart = new Chart(ctx).Doughnut(data, {
+    animateScale: true
+});*/
+
+  /* FOR CHART.JS*/
 
 
     /*!
