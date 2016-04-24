@@ -11,6 +11,151 @@ body {
   background: #DDD7D1;
 }
 
+.absolutediv {
+width: 400px;
+height: 300px;
+/*border: red 1px solid;*/
+position: absolute;
+display: block;
+z-index: 2;
+margin-top: -300px;
+}
+
+section {
+
+z-index: 20;
+position: absolute;
+width: 400px;
+height: 300px;
+display: inline-block;
+}
+
+.facetext{
+  font-size: 28px;
+  vertical-align: text-top;
+  display: inline-block;
+  vertical-align: top; /* here */
+}
+
+/* DOESNT DO ANYTHING
+.absolute img {
+
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  display: inline-block;
+  z-index: 1;
+  top: 0px;
+  margin-top: 0px;
+  margin-right:  0%;
+}*/
+
+
+
+.hat {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  z-index: 7;
+}
+.necklace {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  z-index: 5;
+}
+
+.glasses {
+  height: 200px;
+  width: 200px;
+
+  position: absolute;
+  z-index: 7;
+}
+
+.hair {
+  height: 200px;
+  width: 200px;
+
+  position: absolute;
+  z-index: 6;
+}
+.afro {
+  height: 200px;
+  width: 200px;
+
+  position: absolute;
+  z-index: 8;
+}
+
+li { cursor: pointer; cursor: hand; }
+
+.mustache {
+  width: 120px;
+/*  margin-left: 364px;
+  margin-top: 300px; */
+  position: absolute;
+  z-index: 4;
+}
+.beard {
+ /* 
+ margin-left: 322px;
+  margin-top: 269px; 
+  width: 228;will be width of head*/
+  width: 120px;
+  position: absolute;
+  z-index: 3;
+
+}
+
+.header {
+  font-size: 70px;
+}
+
+.logo {
+  font-size: 19vw;
+}
+
+.tagline {
+  font-size: 20px;
+}
+
+.takephotoIcon {
+  font-size: 70px;
+  position: absolute;
+  color: red;
+  vertical-align:middle;
+  margin-left: 25%;
+  margin-top: 50%;
+}
+
+.takePhotoMobileIcon{
+
+}
+
+.takePhotoMobileIcon:hover{
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.2);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.2);   
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.2);
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
+  color: red;
+}
+
+.takephotoIcon:hover{
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.2);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.2);   
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.2);
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
+}
+
 #map {
   position: absolute;
   top: 0px;
@@ -102,6 +247,8 @@ band2 h2 {
   text-align: left;
 }
 
+
+
 .explanation {
   min-width: 12.42em;
   float: left;
@@ -134,7 +281,36 @@ band2 h2 {
   overflow: hidden;
   padding: 0;
   position: relative;
-  min-width: 200px;
+  min-width: 160px;
+}
+
+video {
+  height: 300px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  min-width: 160px;
+  background-position: -80px 0px;
+  margin-left: -150px;
+}
+canvas {
+  height: 300px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  min-width: 160px;
+  background-position: -80px 0px;
+  margin-left: -150px;
+}
+
+#photo{
+  height: 300px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  min-width: 160px;
+  background-position: -80px 0px;
+  margin-left: -150px;
 }
 
 #topBar {
@@ -184,7 +360,8 @@ band2 h2 {
 
 h1, h3 {
   font-family: 'Signika', sans-serif;
-  font-weight: 700;
+  font-weight: 1000;
+  font-size: 43px;
   text-align: center;
 }
 
@@ -243,6 +420,8 @@ a.arrow {
 a.arrow:hover {
   color: #FFC52F;
 }
+
+
 
 @media only screen and (min-width: 767px) {
   body {
@@ -321,5 +500,6 @@ a.arrow:hover {
     text-align: center;
   }
 }
+
 
 

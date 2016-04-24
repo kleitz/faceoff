@@ -10,7 +10,8 @@ $( document ).ready(function() {
 
 
    $( ".absoluteP" ).hide(); // hide all on load
-
+/*   $("#hat").show();
+   $("#mustache").show();*/
 
 
 /*

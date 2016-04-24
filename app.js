@@ -74,7 +74,7 @@ console.log(req.file);
 	im.resize({
 	  srcPath: req.file.path,
 	  dstPath: req.file.destination + req.file.filename + '-cropped.jpg',
-	  width: 900,
+	  width: 400,
 	  height: 0, // height is irrelevant
 	  quality: 1
 	 // gravity: "North" dont know what it means
@@ -151,12 +151,12 @@ app.post('/imageupload', function(req, res, next) {
       im.resize({
         srcPath: "image",
         dstPath: "image" + randomFilename + '-cropped.png',
-        width: 900,
+        width: 400,
         height: 0, // height is irrelevant
         quality: 1
        // gravity: "North" dont know what it means
       }, function(err, stdout, stderr){ if (err) throw err;
-      console.log('SUCCESS cropped ' + "image" + ' .png to fit within 800x600px');
+      console.log('SUCCESS cropped ' + "image" + ' .png to fit within 400x300px');
 
       // delete local file
       fs.exists("image", function(exists) {
